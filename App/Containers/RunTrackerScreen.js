@@ -7,6 +7,9 @@ import styles from './Styles/RunTrackerScreenStyles'
 import RoundedButton from '../../App/Components/RoundedButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
+@connect(store => ({
+  userinfo: store
+}))
 
 class RunTrackerScreen extends React.Component {
   constructor(props) {
@@ -86,7 +89,6 @@ class RunTrackerScreen extends React.Component {
         var initialPosition = JSON.stringify(position);
         this.setState({initialPosition: position.coords});
         this.setState({lastPosition: position.coords});
-        console.log(initialPosition, "this is init post")
         
       },
       (error) => alert(JSON.stringify(error)),
@@ -104,8 +106,6 @@ class RunTrackerScreen extends React.Component {
         coordinates: [...this.state.coordinates, {latitude: position.coords.latitude, longitude: position.coords.longitude}]
       }
       )
-      console.log("this is long for last pos",position.coords)
-      console.log({latitude: position.coords.latitude, longitude: position.coords.longitude})
 
     });
   }
@@ -115,6 +115,8 @@ class RunTrackerScreen extends React.Component {
 
 
   render () {
+    console.log(this.props)
+    console.log("props **")
     // console.log(this.state.initialPosition, "this is state")
     // if(!this.state.initialPosition.latitude){
     //   return (
