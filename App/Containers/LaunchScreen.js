@@ -54,6 +54,14 @@ var lock = new Auth0Lock({clientId: 'KhDTuf4lq48s3Db6kEvHHaLGaQCb7ETk', domain: 
 
   }
 
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {},
+      (error) => console.log(error),
+      {enableHighAccuracy: true, timeout: 250, maximumAge: 0}
+    )
+  }
+
   componentWillMount() {
     if (!this.props.username) {
       this.showLogin()
@@ -68,7 +76,7 @@ var lock = new Auth0Lock({clientId: 'KhDTuf4lq48s3Db6kEvHHaLGaQCb7ETk', domain: 
     return (
       <View style={{flex: 1, flexShrink: 1/2, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
       <View style={{flex: 1, flexShrink: 1/2, flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-        <Image source={Images.waves} style={styles.backgroundImage} resizeMode='repeat' />
+        <Image source={Images.waves2} style={styles.backgroundImage} resizeMode='repeat' />
         <ScrollView style={styles.container}>
           
           <View style={styles.centered}>
